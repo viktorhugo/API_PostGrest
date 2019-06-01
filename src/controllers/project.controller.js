@@ -13,6 +13,7 @@ export async function getProyects(req, res) {
   }
  }
 export async function createProject(req, res) {
+    
     const {name, priority, description, deliverydate} = req.body
     try {
         const newProject = await Project.create({ 
@@ -74,4 +75,34 @@ export async function deleteProyect(req, res) {
         console.log(error);        
         throw error
     }
+}
+
+export async function updateProyect(req, res) {
+    const { id }= req.params
+    const {name, priority, description, deliverydate} = req.body
+
+    try {
+        const proyects = await Project.findAll({
+            attributes:['id','name', 'priority', 'description', 'deliverydate'],
+            where:{ id }
+        })
+        
+        if (proyects) {
+            const proyectUpdate = proyects.forEach(proyect => {
+                proyect.update({
+                    name,
+                    priority,
+                    description,
+                    deliverydate
+                })
+            });
+            res.json({
+                message:'Project Update Sucessfully',
+                data: proyectUpdate
+            })
+        }
+    } catch (error) {
+        console.log(error);
+        throw error
+    }  
 }

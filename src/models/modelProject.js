@@ -15,7 +15,7 @@ const Project = sequelize.define('projects',{
     timestamps: false 
 })
 
-Project.hasMany(Task, {foreingKey:' projectId', sourceKey: 'id'}) // el proyecto tiene muchas tareas
-Task.belongsTo(Project, { foreingKey: 'projectId', sourceKey: 'id'}) // muchas tareas le pertenecen a un solo proyecto
+Project.hasMany(Task, {foreingKey:' projectid', sourceKey: 'id'}) // el proyecto tiene muchas tareas
+Task.belongsTo(Project, { foreingKey: 'projectid', sourceKey: 'id'}) // muchas tareas le pertenecen a un solo proyecto
 
 export default Project

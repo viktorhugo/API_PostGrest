@@ -11,6 +11,6 @@ app.use(json())
 
 //routes
 app.use('/api/proyects', proyectRouter)
-app.use('/api/task', taskRouter)
+app.use('/api/tasks', taskRouter)
 
 export default app
